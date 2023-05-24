@@ -2,24 +2,35 @@
   <div id="app">
     <header>
       <!-- Contenido del encabezado -->
-      <div class="header-top">
-        <!-- Logo de la página -->
-        <div class="logo">
-          <img src="./assets/logo.png" alt="Logo de la página" />
-        </div>
-      </div>
       <nav>
-        <div
-          v-for="option in options"
-          :key="option.path"
-          class="nav-item"
-          @mouseenter="showAnimation = option.path, highlightOption(option.path)"
-          @mouseleave="showAnimation = '', resetHighlight()"
-          @click="goToPage(option.path)"
-          :class="{ active: selectedOption === option.path, highlighted: option.highlighted }"
-        >
-          <span class="comic-text">{{ option.title }}</span>
-          <div class="underline" :class="{ animated: showAnimation === option.path }"></div>
+        <div class="desktopNav">
+          <div class="desktopNav__upper">
+            <div class="desktopNav__tabAndLogoContainer">
+              <div></div>
+              <div class="logo">
+                <span class="icon">
+                  <img class="logo-marvel" src="./assets/logo.png" alt="Logo de la página" />
+                </span>
+              </div>
+              <div class="desktopNav__right-links"> Suscribete</div>
+            </div>
+          </div>
+          <div class="desktopNav__lower">
+            <ul class="desktopNav__linkContainer">
+              <li
+                v-for="option in options"
+                :key="option.path"
+                class="nav-item"
+                @mouseenter="showAnimation = option.path, highlightOption(option.path)"
+                @mouseleave="showAnimation = '', resetHighlight()"
+                @click="goToPage(option.path)"
+                :class="{ active: selectedOption === option.path, highlighted: option.highlighted }"
+              >
+                <span class="comic-text desktopNav__linkWrapper">{{ option.title }}</span>
+                <div class="underline" :class="{ animated: showAnimation === option.path }"></div>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
@@ -71,15 +82,49 @@ export default {
 </script>
 
 <style>
-header {
-  background-color: #000000;
-  padding: 10px;
+.logo-marvel{
+  width: 130px;
+}
+
+.icon {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 20px;
+    line-height: 1.3;
+}
+.desktopNav__linkWrapper {
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 0 18px;
+    margin: 0 auto;
+    cursor: pointer;
+    list-style: none;
+}
+
+.desktopNav__linkContainer {
+    display: flex;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav {
-  display: flex;
-  justify-content: center;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  display: block;
+  height: 92px;
 }
+
 
 .nav-item {
   position: relative;
@@ -113,12 +158,8 @@ nav {
 }
 
 .comic-text {
-  font-weight: bolder;
-  text-transform: uppercase;
-  font-family: 'MarvelFont', sans-serif;
-  letter-spacing: 2px; /* Ajusta el espaciado entre caracteres según sea necesario */
-  font-size: 25px; /* Ajusta el tamaño de la fuente según sea necesario */
-  margin-top: 5px;
+  font-family: "Roboto";
+  font-weight: normal;
 }
 
 
@@ -146,11 +187,68 @@ nav {
   border-bottom: 1px solid gray; /* Color y estilo de la línea */
 }
 
-.header-top img {
-  width: 200px;
-  height: auto;
-  
+.logo {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 52px;
+    width: 130px;
 }
 
+.desktopNav {
+    width: 100%;
+    position: relative;
+    background-color: #202020;
+    color: #fff;
+    font-family: "Regular","Trebuchet MS",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.desktopNav__right-links {
+    font: 400 12px/1 "Condensed Bold","Trebuchet MS",Helvetica,Arial,sans-serif;
+    color: #e62429;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    z-index: 1;
+    flex-direction: row;
+}
+
+.desktopNav__tabAndLogoContainer {
+    max-width: 1200px;
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.desktopNav__upper {
+    height: 52px;
+    border-bottom: 1px solid #393939;
+    padding: 0px 20px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.desktopNav__lower {
+    height: 40px;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
 
 </style>
