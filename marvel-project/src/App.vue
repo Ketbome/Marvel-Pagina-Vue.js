@@ -4,19 +4,27 @@
       <!-- Contenido del encabezado -->
       <nav>
         <div class="desktopNav">
-          <div class="desktopNav__upper">
-            <div class="desktopNav__tabAndLogoContainer">
-              <div></div>
+          <div class="NavSuperior">
+            <div class="LogoContainer">
+              <div>
+                <a href="https://github.com/Ketbome">
+                  <img class="logo-git" src="./assets/GitHub-logo.png"/>
+                </a>
+              </div>
               <div class="logo">
                 <span class="icon">
                   <img class="logo-marvel" src="./assets/logo.png" alt="Logo de la página" />
                 </span>
               </div>
-              <div class="desktopNav__right-links"> Suscribete</div>
+              <div class="nav_derecha">
+                <a href="https://www.linkedin.com/in/catopab/">
+                  <img class="logo-git" src="./assets/Linked-logo.png" />
+                </a>
+              </div>
             </div>
           </div>
-          <div class="desktopNav__lower">
-            <ul class="desktopNav__linkContainer">
+          <div class="NavInferior">
+            <ul class="linkContainer">
               <li
                 v-for="option in options"
                 :key="option.path"
@@ -26,7 +34,7 @@
                 @click="goToPage(option.path)"
                 :class="{ active: selectedOption === option.path, highlighted: option.highlighted }"
               >
-                <span class="comic-text desktopNav__linkWrapper">{{ option.title }}</span>
+                <span class="comic-text linkWapper">{{ option.title }}</span>
                 <div class="underline" :class="{ animated: showAnimation === option.path }"></div>
               </li>
             </ul>
@@ -98,7 +106,7 @@ body {
     font-family: 20px;
     line-height: 1.3;
 }
-.desktopNav__linkWrapper {
+.linkWapper {
     text-transform: uppercase;
     font-weight: 800;
     padding: 0 18px;
@@ -107,7 +115,7 @@ body {
     list-style: none;
 }
 
-.desktopNav__linkContainer {
+.linkContainer {
     display: flex;
     margin: 0 auto;
 }
@@ -137,12 +145,20 @@ nav {
 
 .underline {
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: 0;
+  left: 50%; /* Posiciona inicialmente en el centro */
+  transform: translateX(-50%) scaleX(0); /* Inicia con ancho 0 y centrada horizontalmente */
+  transform-origin: center;
   width: 0;
-  height: 2px;
-  background-color: #ff1616;
-  transition: width 0.4s;
+  height: 4px;
+  background-color: #ff0000;
+  transition: transform 0.3s;
+  margin-top: 2px; /* Ajusta este valor según sea necesario */
+}
+
+.animated {
+  transform: translateX(-50%) scaleX(1); /* Expandir al ancho completo */
+  width: 100%;
 }
 
 .animated {
@@ -158,8 +174,9 @@ nav {
 }
 
 .comic-text {
-  font-family: "Roboto";
-  font-weight: normal;
+  letter-spacing: 1px;
+  font: 400 12px/1 "Condensed Bold","Trebuchet MS",Helvetica,Arial,sans-serif;
+  font-size: 15px;
 }
 
 
@@ -179,23 +196,24 @@ nav {
   transition-delay: 0.5;
 }
 
-.header-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px; /* Ajusta la altura deseada */
-  border-bottom: 1px solid gray; /* Color y estilo de la línea */
-}
-
 .logo {
     display: flex;
     justify-content: center;
     margin: auto;
-    position: absolute;
     left: 0;
     right: 0;
     height: 52px;
     width: 130px;
+}
+
+.logo-git {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    height: 52px;
+    width: auto;
 }
 
 .desktopNav {
@@ -203,24 +221,17 @@ nav {
     position: relative;
     background-color: #202020;
     color: #fff;
-    font-family: "Regular","Trebuchet MS",Helvetica,Arial,sans-serif;
-    font-size: 15px;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
 }
 
-.desktopNav__right-links {
-    font: 400 12px/1 "Condensed Bold","Trebuchet MS",Helvetica,Arial,sans-serif;
-    color: #e62429;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.nav_derecha {
     display: flex;
-    z-index: 1;
-    flex-direction: row;
+    align-items: center;
 }
 
-.desktopNav__tabAndLogoContainer {
+.LogoContainer {
     max-width: 1200px;
     margin: auto;
     justify-content: space-between;
@@ -229,7 +240,7 @@ nav {
     box-sizing: border-box;
 }
 
-.desktopNav__upper {
+.NavSuperior {
     height: 52px;
     border-bottom: 1px solid #393939;
     padding: 0px 20px;
@@ -243,7 +254,7 @@ div {
     padding: 0;
 }
 
-.desktopNav__lower {
+.NavInferior {
     height: 40px;
     text-align: center;
     display: flex;
