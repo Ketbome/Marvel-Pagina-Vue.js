@@ -63,13 +63,6 @@
   font-size: 15px;
 }
 
-
-@font-face {
-  font-family: 'MarvelFont';
-  src: url('../assets/Marvel-Regular.ttf') format('truetype');
-  /* Otros estilos de fuente o decoración que desees agregar */
-}
-
 .nav-item.highlighted {
   color: #ffffff; /* Color de texto para opción resaltada */
   transition: color 1s;
