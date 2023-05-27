@@ -55,21 +55,26 @@
   }
 
   .section-title{
-    text-align: center;
-    font-size: 24px;
+    margin: auto;
     font-weight: bold;
+    text-align: center;
+  }
+
+  .container-top {
+    margin: auto;
+    height: 160px;
+    padding: 0px 20px;
+    width: 90%;
+  }
+
+  .container-top-title {
+    height: 20px;
+    padding-top: 15px;
     margin-bottom: 20px;
+    font-size: 25px;
   }
-  .search-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
+
+  .container-top-search {
+    padding: 10px 200px;
+    height: 80px;
   }

@@ -1,9 +1,18 @@
 <template>
   <div class="container_pages">
     <div class="container_box">
-      <h2 class="section-title">Personajes</h2>
-      <div class="search-bar">
-        <input type="text" v-model="searchTerm" placeholder="Buscar personajes" @input="handleSearchInput">
+      <div class="container-top">
+        <div class="container-top-title">
+          <h2 class="section-title">Marvel Characters</h2>
+        </div>
+        <div class="container-top-search">
+          <div class="container">
+            <input type="text" v-model="searchTerm" placeholder="Buscar Personaje" @input="handleSearchInput">
+            <div class="btn">
+              <i class="fa fa-search"></i>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="grid-container">
         <div v-for="personaje in filteredPersonajes" :key="personaje.id" class="grid-item" @mouseover="showName(personaje)" @mouseleave="hideName">
@@ -18,6 +27,7 @@
 <script>
 import axios from 'axios';
 import '../styles/PageStyles.css';
+import '../styles/SearchStyles.css';
 
 export default {
   data() {
@@ -100,7 +110,7 @@ export default {
       clearTimeout(this.searchTimeout); // Limpiar el temporizador existente si hay uno
       this.searchTimeout = setTimeout(() => {
         this.search(); // Realizar la búsqueda después de 2 segundos de inactividad
-      }, 500);
+      }, 300);
     },
   },
 };
