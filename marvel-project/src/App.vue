@@ -97,6 +97,7 @@ body {
     width: 100%;
     font-family: 20px;
     line-height: 1.3;
+    font: 400 12px/1 "Condensed Bold","Trebuchet MS",Helvetica,Arial,sans-serif;
 }
 
 .logo-marvel{
