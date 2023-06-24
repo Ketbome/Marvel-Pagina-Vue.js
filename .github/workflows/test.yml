@@ -1,20 +1,14 @@
-name: Vue
-
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
-
+name: Build Vue
+on: [push]
 jobs:
-  tests:
-    runs-on: ubuntu-22.04
-
+  build_vue:
+    runs-on: ubuntu-latest
+    name: Build Vue
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - id: Build-Vue
+        uses: xRealNeon/VuePagesAction@1.0.1
         with:
-          node-version: 18
-          cache: "npm"
-      - name: install
-        run: npm ci
+          username: "ketbome"
+          reponame: "Marvel"
+          token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
