@@ -55,7 +55,7 @@ export default {
       const publicKey = '39d77a9d8857c84a2422f18b2de8c1d1';
       const hash = 'd871bb31390a8b088f14848d63c14333';
 
-      const apiUrl = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&offset=${this.offset}&limit=${this.limit}`;
+      const apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&offset=${this.offset}&limit=${this.limit}`;
 
       axios.get(apiUrl)
         .then(response => {
@@ -84,9 +84,9 @@ export default {
       const ts = '1';
       const publicKey = '39d77a9d8857c84a2422f18b2de8c1d1';
       const hash = 'd871bb31390a8b088f14848d63c14333';
-      let apiUrl = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${this.limit}`
+      let apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${this.limit}`
       if ( this.searchTerm != ''){
-        apiUrl = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${this.searchTerm}&limit=${this.limit}`
+        apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${this.searchTerm}&limit=${this.limit}`
       }
       axios.get(apiUrl)
         .then(response => {
