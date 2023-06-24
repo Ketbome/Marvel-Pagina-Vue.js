@@ -27,8 +27,4 @@ jobs:
 
     - run: npm run build --if-present
 
-    - name: Run Vue.js project
-      run: |
-        npm install -g @vue/cli
-        npm install
-        npm run serve
+    - run: npm run serve
