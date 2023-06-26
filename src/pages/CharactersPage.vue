@@ -5,13 +5,8 @@
         <div class="container-top-title">
           <h2 class="section-title">Marvel Characters</h2>
         </div>
-        <div class="container-top-search">
-          <div class="container">
-            <input type="text" v-model="searchTerm" placeholder="Buscar Personaje" @input="handleSearchInput">
-            <div class="btn">
-              <i class="fa fa-search"></i>
-            </div>
-          </div>
+        <div class="container-search">
+            <input class="search" type="text" v-model="searchTerm" placeholder="Buscar Personaje" @input="handleSearchInput">
         </div>
       </div>
       <div class="grid-container">
@@ -27,7 +22,6 @@
 <script>
 import axios from 'axios';
 import '../styles/PageStyles.css';
-import '../styles/SearchStyles.css';
 
 export default {
   data() {
@@ -96,15 +90,6 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    },
-    handleScroll() {
-      const scrollPosition = window.pageYOffset + window.innerHeight;
-      const pageHeight = document.documentElement.scrollHeight;
-
-      // Comprueba si el usuario ha llegado al final de la página y carga más elementos
-      if (scrollPosition <= pageHeight) {
-        this.loadMore();
-      }
     },
     handleSearchInput() {
       clearTimeout(this.searchTimeout); // Limpiar el temporizador existente si hay uno
